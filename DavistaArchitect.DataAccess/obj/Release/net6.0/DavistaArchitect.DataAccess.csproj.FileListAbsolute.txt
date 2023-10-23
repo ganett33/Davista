@@ -1,0 +1,15 @@
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\bin\Release\net6.0\DavistaArchitect.DataAccess.deps.json
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\bin\Release\net6.0\DavistaArchitect.DataAccess.dll
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\bin\Release\net6.0\DavistaArchitect.DataAccess.pdb
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\bin\Release\net6.0\DavistaArchitect.Models.dll
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\bin\Release\net6.0\DavistaArchitect.Models.pdb
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.csproj.AssemblyReference.cache
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.AssemblyInfoInputs.cache
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.AssemblyInfo.cs
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.csproj.CopyComplete
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.dll
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\refint\DavistaArchitect.DataAccess.dll
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\DavistaArchitect.DataAccess.pdb
+C:\Users\ganet\source\repos\ganett33\DavistaArchitect\DavistaArchitect.DataAccess\obj\Release\net6.0\ref\DavistaArchitect.DataAccess.dll
