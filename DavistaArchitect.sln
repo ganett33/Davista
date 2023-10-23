@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavistaArchitect.Web", "DavistaArchitect.Web\DavistaArchitect.Web.csproj", "{5183F35D-34BF-4C9C-B84E-87DD8FFD24F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6EAD2733-E56E-4942-BFDA-0C5496A344AB} = {6EAD2733-E56E-4942-BFDA-0C5496A344AB}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavistaArchitect.DataAccess", "DavistaArchitect.DataAccess\DavistaArchitect.DataAccess.csproj", "{A653BE3B-5380-47CF-90B3-2CB2D8CBCC00}"
+	ProjectSection(ProjectDependencies) = postProject
+		{565B9962-CE91-4E59-ABBD-193AAFFF341D} = {565B9962-CE91-4E59-ABBD-193AAFFF341D}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavistaArchitect.Models", "DavistaArchitect.Models\DavistaArchitect.Models.csproj", "{6EAD2733-E56E-4942-BFDA-0C5496A344AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavistaArchitect.Utility", "DavistaArchitect.Utility\DavistaArchitect.Utility.csproj", "{565B9962-CE91-4E59-ABBD-193AAFFF341D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5183F35D-34BF-4C9C-B84E-87DD8FFD24F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5183F35D-34BF-4C9C-B84E-87DD8FFD24F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5183F35D-34BF-4C9C-B84E-87DD8FFD24F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5183F35D-34BF-4C9C-B84E-87DD8FFD24F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A653BE3B-5380-47CF-90B3-2CB2D8CBCC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A653BE3B-5380-47CF-90B3-2CB2D8CBCC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A653BE3B-5380-47CF-90B3-2CB2D8CBCC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A653BE3B-5380-47CF-90B3-2CB2D8CBCC00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EAD2733-E56E-4942-BFDA-0C5496A344AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EAD2733-E56E-4942-BFDA-0C5496A344AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EAD2733-E56E-4942-BFDA-0C5496A344AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EAD2733-E56E-4942-BFDA-0C5496A344AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{565B9962-CE91-4E59-ABBD-193AAFFF341D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{565B9962-CE91-4E59-ABBD-193AAFFF341D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{565B9962-CE91-4E59-ABBD-193AAFFF341D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{565B9962-CE91-4E59-ABBD-193AAFFF341D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB8FB108-F7E8-48BC-A05F-AFD88EF85D6A}
+	EndGlobalSection
+EndGlobal
