@@ -1,0 +1,115 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Webmanager\Views\ApplicationUser\**" />
+    <Compile Remove="Areas\Webmanager\Views\RoleManager\**" />
+    <Compile Remove="Areas\Webmanager\Views\UserLevel\**" />
+    <Content Remove="Areas\Webmanager\Views\ApplicationUser\**" />
+    <Content Remove="Areas\Webmanager\Views\RoleManager\**" />
+    <Content Remove="Areas\Webmanager\Views\UserLevel\**" />
+    <EmbeddedResource Remove="Areas\Webmanager\Views\ApplicationUser\**" />
+    <EmbeddedResource Remove="Areas\Webmanager\Views\RoleManager\**" />
+    <EmbeddedResource Remove="Areas\Webmanager\Views\UserLevel\**" />
+    <None Remove="Areas\Webmanager\Views\ApplicationUser\**" />
+    <None Remove="Areas\Webmanager\Views\RoleManager\**" />
+    <None Remove="Areas\Webmanager\Views\UserLevel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Webmanager\Controllers\ApplicationUserController .cs" />
+    <Compile Remove="Areas\Webmanager\Controllers\RoleManagerController.cs" />
+    <Compile Remove="Areas\Webmanager\Controllers\UserLevelController .cs" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Content Remove="Areas\Client\Views\Home\House.cshtml" />
+    <Content Remove="Areas\Webmanager\Views\Category\Delete.cshtml" />
+    <Content Remove="Areas\Webmanager\Views\Category\_EditCategoryPartial.cshtml" />
+    <Content Remove="Areas\Webmanager\Views\House\Delete.cshtml" />
+    <Content Remove="Areas\Webmanager\Views\ProjectType\Delete.cshtml" />
+    <Content Remove="Areas\Webmanager\Views\StaffProfile\Delete.cshtml" />
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Identity\Pages\Account\AccessDenied.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ConfirmEmail.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ExternalLogin.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ForgotPassword.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ForgotPasswordConfirmation.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Lockout.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Login.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\LoginWith2fa.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\LoginWithRecoveryCode.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Logout.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\ChangePassword.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\DeletePersonalData.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\Disable2fa.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\DownloadPersonalData.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\Email.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\EnableAuthenticator.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\ExternalLogins.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\GenerateRecoveryCodes.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\Index.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\PersonalData.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\ResetAuthenticator.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\SetPassword.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\ShowRecoveryCodes.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\TwoFactorAuthentication.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\_Layout.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\_StatusMessage.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\RegisterConfirmation.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ResendEmailConfirmation.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ResetPassword.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\ResetPasswordConfirmation.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\_StatusMessage.cshtml" />
+    <None Include="Areas\Identity\Pages\Account\_ViewImports.cshtml" />
+    <None Include="compilerconfig.json" />
+    <None Include="Views\Shared\Client_Home\_ContactForm.cshtml" />
+    <None Include="Views\Shared\Client_Home\_ImageSlider.cshtml" />
+    <None Include="Views\Shared\Client_Home\_Process.cshtml" />
+    <None Include="Views\Shared\Client_Home\_Projects.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\Navigation\_AdminNav.cshtml" />
+    <None Include="Views\Shared\Navigation\_DefaultNav.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Shared\_Notification.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.21" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="SmartBreadcrumbs" Version="3.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DavistaArchitect.DataAccess\DavistaArchitect.DataAccess.csproj" />
+    <ProjectReference Include="..\DavistaArchitect.Utility\DavistaArchitect.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\house\" />
+  </ItemGroup>
+
+</Project>

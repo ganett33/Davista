@@ -1,0 +1,79 @@
+﻿@using DavistaArchitect.Models;
+@using Microsoft.AspNetCore.Identity;
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="https://dbijapkm3o6fj.cloudfront.net/resources/10445,4,1,9,4,0/-2377-/20160118123903/davista-architecture-ltd.jpeg" alt="davisat_logo" width="150" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto align-items-start">
+                <li class="nav-item small-home active">
+                    <a class="nav-link text-white" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" asp-area="Client" asp-controller="Home" asp-action="Projects">Projects</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="Client" asp-controller="Home" asp-action="OurTeam">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/Client/Home/#contactus">Contact</a>
+                </li>             
+            </ul>
+            <div class="d-lg-flex ">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <partial name="_LoginPartial" />
+
+                    <div class="mt-2">
+                        <span class="nav-item ">
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x text-white "></i>
+                                </a>
+                            </span>
+                        </span>
+                        <span class="nav-item">
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x text-white "></i>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div >
+                        <span class="nav-item ">
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x text-white "></i>
+                                </a>
+                            </span>
+                        </span>
+                        <span class="nav-item">
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x text-white "></i>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</nav>

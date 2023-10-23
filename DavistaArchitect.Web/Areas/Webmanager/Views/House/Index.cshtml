@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+@inject IAuthorizationService AuthorizationService
+@model IEnumerable<DavistaArchitect.Models.House>
+
+@{
+    ViewData["Title"] = "Houses";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div class="pb-2">
+        @if ((AuthorizationService.AuthorizeAsync(User, Permissions.House.Upsert)).Result.Succeeded)
+        {
+            <a asp-controller="House" asp-action="Upsert" class="btn btn-success btn-sm">
+                <i class="fa-solid fa-plus"></i> Create
+            </a>
+        }
+    </div>
+    <div class="table-responsive">
+        <table id="tblData_house" class="table table-bordered table-responsive display" width="100%">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">
+                        Project Type
+                    </th>
+                    <th scope="col" class="text-center">
+                        Name
+                    </th>
+                    <th scope="col" class="text-center">
+                        Description
+                    </th>
+                    <th scope="col" class="text-center">
+                        Image
+                    </th>
+                    <th scope="col" class="text-center">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+</section>
+
+@section Scripts {
+    <script src="/js/house.js"></script>
+}

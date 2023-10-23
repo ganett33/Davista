@@ -1,0 +1,209 @@
+﻿ <!-- Header(image slider) -->
+<partial name="~/Views/Shared/Client_Home/_ImageSlider.cshtml" />
+
+
+<!-- Details 1 -->
+<section id="detail" class="details pt-6 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="~/images/office.jpeg" alt=""
+                     class="img-fluid mb-4" />
+            </div>
+
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h2>
+                    davista
+                </h2>
+                <h2>
+                    Architectural Designers
+                </h2>
+                <p>
+                    davista is the trading and brand name of davista  architecture ltd, which has delivered architectural design services in Tauranga since 1988,
+                    Managing  Director Kane de Raat   has  been at davista since 2004, and a director since 2013 and  taking over as sole  director  from  founder Colin Davis in 2023.    Find out more about the davista team in the profiles section.
+                </p>
+                <p>
+                    We pride ourselves on being open-minded, approachable and sensitive to our customers’ needs. Our clients are diverse with a range of budgets, from individuals,
+                    through to developers planning small to large scale urban design projects.
+
+                    As local pioneers of computer aided design (CAD), we are experts in 3D Rendering, modeling and full colour images or moving animations.
+                    We run the latest design programs to help you visualise the finished product from any angle.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects -->
+@model List<DavistaArchitect.Models.House>
+
+@if (!Model.Any())
+{
+    <partial name="~/Views/Shared/Client_Home/_Projects.cshtml" />
+}
+else
+{
+    <section id="projects" class="projects py-6">
+        <div class="container">
+            <h2 class="text-center pb-4">
+                Some Of Our <span class="text-secondary">Projects</span>
+            </h2>
+            <div class="row mb-4">
+                @foreach (var project in Model.Take(6))
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <a class="text-decoration-none "
+                           asp-area="Client"
+                           asp-controller="Home"
+                           asp-action="HouseDetail"
+                           asp-route-projectTypeUrl="@project?.ProjectType?.ProjectTypeUrl"
+                           asp-route-id="@project?.Id">
+
+                            <div class="card border-0 ">
+                                <img class="rounded-top-3" src="@project.HouseImage" alt="" />
+                                <div class="card-body">
+                                    <h5 class="card-title">@project.HouseName</h5>
+                                </div>
+                            </div>
+
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </section>
+}
+
+
+<!-- Process -->
+<section class="points py-6 bg-info">
+    <div class="container">
+        <div class="row text-center mb-5 ">
+            <div class="col-md-8 offset-md-2">
+                <h2>
+                    Architectural Design Process
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="d-flex gap-3">
+                    <div class="number">
+                        <span class="bg-info py-2 px-4 fs-3 rounded-circle">
+                            1
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="fs-4">Enhance Your Skills</h3>
+                        <p>
+                            Our training videos provide comprehensive insights and
+                            practical tips to help you enhance your skills in various
+                            domains. From technical expertise to soft skills, we've got
+                            you covered.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="d-flex gap-3">
+                    <div class="number">
+                        <span class="bg-info py-2 px-4 fs-3 rounded-circle">2</span>
+                    </div>
+                    <div>
+                        <h3 class="fs-4">Stay Updated</h3>
+                        <p>
+                            Keep pace with the latest industry trends and advancements
+                            through our informative and up-to-date videos. Stay ahead of
+                            the curve and broaden your knowledge.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="d-flex gap-3">
+                    <div class="number">
+                        <span class="bg-info py-2 px-4 fs-3 rounded-circle">3</span>
+                    </div>
+                    <div>
+                        <h3 class="fs-4">Connect with Experts</h3>
+                        <p>
+                            Our platform allows you to connect with like-minded
+                            individuals and industry experts. Expand your network, foster
+                            new connections, and unlock new opportunities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="d-flex gap-3">
+                    <div class="number">
+                        <span class="bg-info py-2 px-4 fs-3 rounded-circle">4</span>
+                    </div>
+                    <div>
+                        <h3 class="fs-4">Flexible Learning</h3>
+                        <p>
+                            Our training videos are available on-demand, allowing you to
+                            learn at your own pace and convenience. Access the content
+                            anytime, anywhere, and tailor your learning experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Contact Us -->
+<section id="contactus" class="contact py-5 ">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-none d-md-block">
+                <div class="image-container">
+                    <img src="images/contact.png" alt="" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-container ">
+                    <h2 class="pt-2">
+                        Contact Us For A Quote
+                    </h2>
+
+                    <form>
+                        <div class="mb-3">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter name" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="email"
+                                   class="form-control"
+                                   placeholder="Enter email" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Enter phone" />
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control"
+                                      placeholder="Enter message"
+                                      rows="5"></textarea>
+                        </div>
+                        <div class="d-grid gap-2 ">
+                            <input type="submit"
+                                   value="Send"
+                                   class="btn btn-primary btn-block text-white" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

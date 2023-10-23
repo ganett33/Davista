@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+@inject IAuthorizationService AuthorizationService
+@model DavistaArchitect.Models.ViewModels.HouseVM
+
+@{
+    ViewData["Title"] = "Upsert";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4  my-6 shadow">
+    <div class="container my-4">
+        <h2>
+            House - @(Model.House.Id != 0 ? "Update" : "Create")
+        </h2>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-10">
+            <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="House.Id" hidden />
+                <input asp-for="House.HouseImage" hidden />
+                <div class="form-group">
+                    <label asp-for="House.HouseName" class="control-label"></label>
+                    <input asp-for="House.HouseName" class="form-control" />
+                    <span asp-validation-for="House.HouseName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="House.HouseDescription" class="control-label"></label>
+                    <textarea asp-for="House.HouseDescription" rows="10" class="form-control"></textarea>
+                    <span asp-validation-for="House.HouseDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="House.CategoryId" class="control-label"></label>
+                    <select asp-for="House.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+                        <option disabled selected>--Select Category--</option>
+                    </select>
+                    <span asp-validation-for="House.CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="House.ProjectTypeId" class="control-label"></label>
+                    <select asp-for="House.ProjectTypeId" asp-items="@Model.ProjectTypeList" class="form-control">
+                        <option disabled selected>--Select Project Type--</option>
+                    </select>
+                    <span asp-validation-for="House.ProjectTypeId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="House.HouseImage" class="control-label"></label>
+                    <input type="file" id="houseImageUploadBox" name="file" asp-for="House.HouseImage" value=">@Model.House.HouseImage" class="form-control" />
+                </div>
+                @* <p>@Model.House.HouseImage</p> *@
+                <div class="row my-3">
+                    <div class="col-4">
+                        <img id="houseImagePreview" src="@Model.House.HouseImage" style="width: 100%"   />
+                    </div>
+                </div>
+                <div class="form-group pt-2">
+                    @if (Model.House.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-success">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onClick="return ValidateInput()" class="btn btn-success">Create</button>
+
+                    }
+                    <a class="btn btn-danger" asp-action="Index">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+
+
+        function ValidateInput() {
+
+            if (document.getElementById("houseImageUploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an image!',
+                });
+                return false;
+            }
+            return true;
+
+        }
+
+
+    </script>
+}

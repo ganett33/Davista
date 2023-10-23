@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DavistaArchitect.Models.StaffProfile>
+
+@{
+    ViewData["Title"] = "Our Team";
+}
+
+<section>
+    <img src="~/images/team2.jpg" class="img-fluid w-100 " />
+</section>
+
+<!-- Meet Our Team -->
+<section id="team">
+    <div class="container pt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Meet Our Team</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var staffProfile in Model)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="@staffProfile.ImageUrl" class="img-fluid" alt="@staffProfile.FullName">
+                        </div>
+                        <div class="member-info">
+                            <h4>@staffProfile.FullName</h4>
+                            <span>@Html.Raw(staffProfile.Description)</span>
+                            <div class="social-links">
+                                <a href="@staffProfile.Email" class="fa fa-envelope"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

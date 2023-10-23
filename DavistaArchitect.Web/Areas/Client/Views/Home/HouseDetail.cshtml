@@ -1,0 +1,62 @@
+﻿@model DavistaArchitect.Models.House
+
+
+@{
+    ViewData["Title"] = $"{Model.HouseName.ToUpper()}";
+    string imageUrl = Model.HouseImage.Replace('\\', '/');
+}
+
+
+<header class="position-relative"
+        style="background:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+               url('@imageUrl') left center no-repeat;
+               background-size:cover;
+               height:500px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 pt-5  text-center">
+                <h2 class="display-1 text-white fw-medium mt-6">
+                    @Model.HouseName
+                </h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<section id="projects" class="projects my-6">
+    <p hidden>@Model.ProjectTypeId</p>
+    <p hidden>@Model.Id</p>
+    <div class="container">
+        <nav aria-label="breadcrumb" id="breadcrumb-list">
+            <ol class="breadcrumb">
+                @foreach (var crumb in ViewBag.Breadcrumbs)
+                {
+                    <li class="breadcrumb-item fw-medium ">
+                        @if (crumb.Url == null)
+                        {
+                            <span>@crumb.DisplayName</span>
+                        }
+                        else
+                        {
+                            <a href="@crumb.Url" class="text-decoration-none">@crumb.DisplayName</a>
+                        }
+                    </li>
+                }
+            </ol>
+        </nav>
+       @*  <a asp-area="Client" asp-controller="Home" asp-action="Projects">Back to Projects</a>*@
+        <div class="row g-1 pt-4 w-auto">
+            <h2 >
+                @Model.HouseName
+            </h2>
+            <p>@Html.Raw(Model.HouseDescription)</p>
+            <img src="@Model.HouseImage" alt="@Model.HouseName" class="img-fluid" />
+
+        </div>
+    </div>
+</section>
+
+
+
+

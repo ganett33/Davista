@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DavistaArchitect.Models.ApplicationUser>
+
+
+@{
+    ViewData["Title"] = "Users";
+}
+<section>
+    <header class="bg-black" style="height:100px;"></header>
+</section>
+<section class="container pt-7">
+    <div class=" ">
+        <a class="btn  text-decoration-none" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Client" })">Register User</a>
+       
+    </div>
+    <div class="col-auto ">
+        <h1>User List</h1>
+        <a class="btn text-decoration-none" asp-controller="ApplicationUser" asp-action="Upsert">
+            <i class="fa-solid fa-user-plus"></i> Add User
+        </a>
+        <table id="tblData_userRoles" class="table table-responsive display" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Display Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        JobTitle
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th>
+                        About Me
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td hidden>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AboutMe)
+                        </td>
+@*                         <td>
+                            @ViewBag.JobTitle
+                        </td>
+                        <td>
+                            @ViewBag.Role
+                        </td>
+                        <td>
+                            @ViewBag.AboutMe
+                        </td> *@
+                        <td>
+                            <a asp-action="Upsert" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</section>
+
+@* @section Scripts {
+    <script src="/js/applicationUser.js"></script>
+}
+ *@

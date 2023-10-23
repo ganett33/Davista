@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DavistaArchitect.Models.ViewModels.ProjectHouseVM>
+
+@{
+    @foreach (var project in Model)
+    {
+        ViewData["Title"] = $"{project.ProjectTypeName.ToUpper()}";
+    };
+
+}
+<div class="bg-dark" style="height:100px;"></div>
+<section>
+    <img src="~/images/executive-homes.jpeg" class="img-fluid w-100" />
+</section>
+<!-- Projects -->
+<section id="projects" class="projects mt-6">
+    <div class="container">
+        <nav aria-label="breadcrumb" id="breadcrumb-list">
+            <ol class="breadcrumb">
+                @foreach (var crumb in ViewBag.Breadcrumbs)
+                {
+                    <li class="breadcrumb-item fw-medium ">
+                        @if (crumb.Url == null)
+                        {
+                            <span>@crumb.DisplayName</span>
+                        }
+                        else
+                        {
+                            <a href="@crumb.Url" class="text-decoration-none">@crumb.DisplayName</a>
+                        }
+                    </li>
+                }
+            </ol>
+        </nav>
+        <div class="row mb-5">
+            <div class="col-md-6 offset-md-3 d-flex flex-column align-items-center text-center">
+                @foreach (var project in Model)
+                {
+                    <h5>
+                        <span class="badge bg-primary rounded-0 text-uppercase">
+                            @project.ProjectTypeName
+                        </span>
+                    </h5>
+                }
+                <h2 class="fw-bold">Projects We Are Proud Of</h2>
+                <p>
+                    We take pride in our successful projects and the value they bring to
+                    our clients. With our expertise and dedication, we have delivered
+                    exceptional results. Here are some highlights.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var project in Model)
+            {
+                @foreach (var houseItem in project.Houses)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="card rounded-3">
+                            <a class="text-decoration-none "
+                               asp-area="Client"
+                               asp-controller="Home"
+                               asp-action="HouseDetail"
+                               asp-route-projectTypeUrl="@project.ProjectTypeUrl"
+                               asp-route-id="@houseItem.Id">
+                                <!-- Add route parameter for id -->
+                                <img class="img-fluid rounded-top-3" src="@houseItem.HouseImage" alt="@houseItem.HouseName" />
+                                <div class="card-body">
+                                    <h4 class="text-center text-dark text-wrap">
+                                        @houseItem.HouseName
+                                    </h4>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

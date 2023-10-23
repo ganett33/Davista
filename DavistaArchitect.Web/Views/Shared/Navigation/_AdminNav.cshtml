@@ -1,0 +1,33 @@
+﻿<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarAdmin">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item small-home">
+                    <a class="nav-link " asp-area="Client" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " asp-area="Webmanager" asp-controller="Category" asp-action="Index">Category</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-area="Client" asp-controller="Projects" asp-action="Index">Projects</a>
+                        <a class="dropdown-item" asp-area="Client" asp-controller="3DServices" asp-action="Index">3D Services</a>
+                        <a class="dropdown-item" asp-area="Client" asp-controller="Process" asp-action="Index">Process</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="OurTeam">Our Team</a>
+                </li>
+                <li class="nav-item">
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

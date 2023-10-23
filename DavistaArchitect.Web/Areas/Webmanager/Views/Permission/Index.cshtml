@@ -1,0 +1,63 @@
+﻿@model DavistaArchitect.Models.ViewModels.PermissionVM
+
+@{
+    ViewData["Title"] = "Permissions";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"] for <a>@Model.RoleName</a></h2>
+    </div>
+    <br />
+    <div >
+        <div id="viewAll" class="card-body table-responsive">
+            <form asp-controller="permission" method="post" asp-action="Update" class="d-inline">
+                <input asp-for="@Model.RoleId" type="hidden" />
+                <table class="table table-striped" id="permissionTable">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                Type
+                            </th>
+                            <th class="text-center">
+                                Permission
+                            </th>
+                            <th class="text-center">
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.RoleClaims.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input asp-for="@Model.RoleClaims[i].Type" type="hidden" />
+                                    @Model.RoleClaims[i].Type
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.RoleClaims[i].Value" type="hidden" />
+                                    @Model.RoleClaims[i].Value
+                                </td>
+                                <td class="text-center">
+                                    <input asp-for="@Model.RoleClaims[i].Selected" class="form-check-input form-control-lg" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="col-sm-12" style="padding: 20px 20px 0px 0px">
+                    <button type="submit" id="save" class="btn btn-success">
+                        <i class="fa fa-check"></i>
+                        Save
+                    </button>
+                    <button asp-controller="Roles" asp-action="Index" asp-route-id="@ViewBag.userId" class="btn btn-danger">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

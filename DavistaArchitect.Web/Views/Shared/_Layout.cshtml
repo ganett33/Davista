@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Davista Architect</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/sc-2.2.0/datatables.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <partial name="~/Views/Shared/Navigation/_DefaultNav.cshtml" />
+    <div>
+        <main role="main" >
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-bg-dark py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p>
+                        <a><i class="fa-solid fa-map-location-dot text-primary"></i> 83 Durham Street , Tauranga , New Zealand</a>
+                    </p>
+                    <p>
+                        <a><i class="fa-solid fa-phone text-primary"></i> 07 578 3792</a>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="nav-item"><a class="nav-link text-white" asp-area="Client" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" asp-area="Client" asp-controller="Home" asp-action="Projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Client/Home/#contactus">Contact us</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#"><i class="fab fa-facebook fa-3x text-white"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-3x text-white"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-3x text-white"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-3x text-white"></i></a>
+                        <a href="#"><i class="fab fa-youtube fa-3x text-white"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="to-top" class="to-top-btn">
+        <img src="/images/up-arrow.png" alt="" />
+    </button>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/sc-2.2.0/datatables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/sc-2.2.0/datatables.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

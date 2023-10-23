@@ -1,0 +1,111 @@
+﻿@model DavistaArchitect.Models.ViewModels.StaffProfileVM
+
+@{
+    ViewData["Title"] = "Staff Profile";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4  my-6 shadow">
+    <div class="container my-4">
+        <h2>Staff Profile - @(Model.StaffProfile.Id != 0 ? "Update" : "Create")
+        </h2>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-10">
+            <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="StaffProfile.Id" hidden />
+                <input asp-for="StaffProfile.ImageUrl" hidden />
+                <div class="form-group">
+                    <label asp-for="StaffProfile.FirstName" class="control-label"></label>
+                    <input asp-for="StaffProfile.FirstName" class="form-control" />
+                    <span asp-validation-for="StaffProfile.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StaffProfile.LastName" class="control-label"></label>
+                    <input asp-for="StaffProfile.LastName" class="form-control" />
+                    <span asp-validation-for="StaffProfile.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StaffProfile.Email" class="control-label"></label>
+                    <input asp-for="StaffProfile.Email" class="form-control" />
+                    <span asp-validation-for="StaffProfile.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StaffProfile.Description" class="control-label"></label>
+                    <textarea asp-for="StaffProfile.Description" rows="10" class="form-control"></textarea>
+                    <span asp-validation-for="StaffProfile.Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="StaffProfile.StartedDate" class="control-label"></label>
+                    <input asp-for="StaffProfile.StartedDate" class="form-control" />
+                    <span asp-validation-for="StaffProfile.StartedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StaffProfile.CategoryId" class="control-label"></label>
+                    <select asp-for="StaffProfile.CategoryId" asp-items="@Model.CategoryList" class="form-control">
+                        <option disabled selected>--Select Category--</option>
+                    </select>
+                    <span asp-validation-for="StaffProfile.CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StaffProfile.ImageUrl" class="control-label"></label>
+                    <input type="file" id="staffImageUploadBox" name="file" asp-for="StaffProfile.ImageUrl" class="form-control" />
+                </div>
+                <div class="row my-3">
+                    <div class="col-4">
+                        <img id="staffImagePreview" src="@Model.StaffProfile.ImageUrl" width="100%" />
+                    </div>
+                </div>
+                <div class="form-group pt-2">
+                    @if (Model.StaffProfile.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-success">Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" onClick="return ValidateInput()" class="btn btn-success">Create</button>
+
+                    }
+                    <a class="btn btn-danger" asp-action="Index">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+
+
+
+        function ValidateInput() {
+
+            if (document.getElementById("staffImageUploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an image!',
+                });
+                return false;
+            }
+            return true;
+
+        }
+
+
+    </script>
+}

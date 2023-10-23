@@ -1,0 +1,89 @@
+﻿@using DavistaArchitect.Models;
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+
+@inject IAuthorizationService AuthorizationService
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="btn-group dropend">
+    <button type="button" class="btn dropdown-toggle border-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+        {
+            <img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+        }
+        else
+        {
+            <i class="fa-solid fa-user fs-6 text-white"></i>
+            <span class="text-white fs-6">@UserManager.GetUserName(User)</span>
+        }
+
+    </button>
+    <ul class=" dropdown-menu dropdown-menu-end">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="dropdown-item">
+                <a class="nav-link text-black fw-bold" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+            </li>
+
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Category.Index)).Result.Succeeded)
+            {
+                <li> <hr class="dropdown-divider"></li>
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="Category" asp-action="Index">Category</a>
+                </li>
+            }
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.ProjectType.Index)).Result.Succeeded)
+            {
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="ProjectType" asp-action="Index">Project Type</a>
+                </li>
+            }
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.House.Index)).Result.Succeeded)
+            {
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="House" asp-action="Index">House</a>
+                </li>
+            }
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.StaffProfile.Index)).Result.Succeeded)
+            {
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="StaffProfile" asp-action="Index">Staff Profile</a>
+                </li>
+            }
+
+
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.UserRoles.Index)).Result.Succeeded)
+            {
+                <li> <hr class="dropdown-divider"> </li>
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="UserRoles" asp-action="Index">Users</a>
+                </li>
+            }
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Roles.Index)).Result.Succeeded)
+            {
+                <li class="dropdown-item">
+                    <a class="nav-link text-decoration-none" asp-area="Webmanager" asp-controller="Roles" asp-action="Index">Roles</a>
+                </li>
+            }
+
+            <li> <hr class="dropdown-divider"> </li>
+            <li class="dropdown-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-danger">Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            <li class="dropdown-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="dropdown-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,70 @@
+﻿@model DavistaArchitect.Models.ProjectType
+
+@{
+    ViewData["Title"] = "Project Types - Edit";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-10">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <input asp-for="ProjectTypeImage" hidden />
+                <div class="form-group">
+                    <label asp-for="ProjectTypeName" class="control-label"></label>
+                    <input asp-for="ProjectTypeName" class="form-control" />
+                    <span asp-validation-for="ProjectTypeName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProjectTypeDescription" class="control-label"></label>
+                    <textarea asp-for="ProjectTypeDescription" rows="10" class="form-control"></textarea>
+                    <span asp-validation-for="ProjectTypeDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProjectTypeImage" class="control-label"></label>
+                    <input type="file" id="projectTypeImageUploadBox" name="projectTypeFile" asp-for="ProjectTypeImage" class="form-control" />
+                </div>
+                <div class="row my-3">
+                    <div class="col-4">
+                        <img id="projectTypeImagePreview" src="\@Model.ProjectTypeImage" width="100%" />
+                    </div>
+                </div>
+                <div class="form-group pt-2">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    <a class="btn btn-danger" asp-action="Index">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        function ValidateInput() {
+            if (document.getElementById("projectTypeImageUploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an image!',
+                });
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+}

@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+@inject IAuthorizationService AuthorizationService
+@model List<DavistaArchitect.Models.ViewModels.UserRolesVM>
+
+@{
+    ViewData["Title"] = "User Lists";
+}
+
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div class="pb-2">
+        @if ((AuthorizationService.AuthorizeAsync(User, Permissions.UserRoles.Manage)).Result.Succeeded)
+        {
+            <a class="btn btn-success btn-sm" asp-area="Identity" asp-page="/Account/Register">
+                <i class="fa-solid fa-plus"></i> Add User
+            </a>
+        }
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm">
+                                <span class="fw-bold">
+                                    @user.UserName
+                                </span>
+                                <br>
+                                <small class="text-muted">
+                                    @user.UserId
+                                </small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>@user.Email</td>
+                    <td>@string.Join(" , ", user.Roles.ToList())</td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-default dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-gear"></i>
+                            </button>
+                            <div class="dropdown-menu shadow animated--grow-in">
+                                <a asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId" class="dropdown-item">
+                                    <i class="fas fa-wrench"></i> Manage Roles
+                                </a>
+                                <a asp-controller="Users" asp-action="ManagePassword" asp-route-userId="@user.UserId" class="dropdown-item">
+                                    <i class="fa-solid fa-key"></i> Change Passowrd
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+@inject IAuthorizationService AuthorizationService
+@model IEnumerable<DavistaArchitect.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+ 
+<header class="bg-dark" style="min-height: 100px;"></header>
+
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div class="container ">
+        <div class="pb-2">
+            @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Category.Create)).Result.Succeeded)
+            {
+                <a asp-action="Create" class="btn btn-success btn-sm">
+                    <i class="fa-solid fa-plus"></i> Create
+                </a>
+            }
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.DisplayOrder)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.CreatedDateTime)
+                    </th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DisplayOrder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDateTime)
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Category.Edit)).Result.Succeeded)
+                                {
+                                    <a class="btn btn-primary text-white m-1 p-2 rounded-1 edit-link" asp-action="Edit" asp-route-id="@item.Id" edit-id="@item.Id">
+                                        <i class="fa-regular fa-pen-to-square "></i>
+                                    </a>
+                                }
+                                @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Category.Delete)).Result.Succeeded)
+                                {
+                                    <div class="delete-section">
+                                        <a class="btn btn-danger text-white m-1 p-2 rounded-1 delete-link" href="@Url.Action("Delete", new {id = item.Id})"><i class="fa-solid fa-trash-can "></i></a>
+                                        <div class="btn btn-outline-danger delete-confirm" style="display:none" data-delete-id="@item.Id">Confirm</div>
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("a.delete-link").click(function () {
+                var deleteLink = $(this);
+                var editLink = $("#" + deleteLink.data("edit-id")); // Get the corresponding edit button
+                deleteLink.hide();
+                editLink.hide();
+                var confirmButton = deleteLink.siblings(".delete-confirm");
+                confirmButton.show();
+
+                var cancelDelete = function () {
+                    removeEvents();
+                    showDeleteLink();
+                };
+
+                var deleteItem = function () {
+                    removeEvents();
+                    confirmButton.hide();
+                    $.post(
+                        '@Url.Action("Delete")',
+                        AddAntiForgeryToken({ id: confirmButton.attr('data-delete-id') }))
+                        .done(function () {
+                            var parentRow = deleteLink.parents("tr:first");
+                            parentRow.fadeOut('fast', function () {
+                                parentRow.remove();
+                            });
+                        }).fail(function (data) {
+                            alert("error");
+                        });
+                    return false;
+                };
+
+                var removeEvents = function () {
+                    confirmButton.off("click", deleteItem);
+                    $(document).on("click", cancelDelete);
+                    $(document).off("keypress", onKeyPress);
+                };
+
+                var showDeleteLink = function () {
+                    confirmButton.hide();
+                    deleteLink.show();
+                    editLink.show();
+                };
+
+                var onKeyPress = function (e) {
+                    //Cancel if escape key pressed
+                    if (e.which == 27) {
+                        cancelDelete();
+                    }
+                };
+
+                confirmButton.on("click", deleteItem);
+                $(document).on("click", cancelDelete);
+                $(document).on("keypress", onKeyPress);
+
+                return false;
+            });
+
+            AddAntiForgeryToken = function (data) {
+                data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+                return data;
+            };
+        });
+    </script>
+}

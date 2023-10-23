@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using DavistaArchitect.Models.Constants
+@inject IAuthorizationService AuthorizationService
+@model IEnumerable<DavistaArchitect.Models.StaffProfile>
+
+@{
+    ViewData["Title"] = "Sraff Profile";
+}
+
+<header class="bg-dark" style="min-height: 100px;"></header>
+<section class="container border-1 rounded-3 p-4 my-6 shadow">
+    <div class="container my-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <div class="pb-2">
+        @if ((AuthorizationService.AuthorizeAsync(User, Permissions.StaffProfile.Upsert)).Result.Succeeded)
+        {
+            <a asp-asp-controller="StaffProfile" asp-action="Upsert" class="btn btn-success btn-sm">
+                <i class="fa-solid fa-plus"></i> Create
+            </a>
+        }
+    </div>
+    <table id="tblData_staff" class="table table-bordered table-responsive display" width="100%">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">
+                    Name
+                </th>
+                <th scope="col" class="text-center">
+                    Email
+                </th>
+                <th scope="col" class="text-center">
+                    Description
+                </th>
+                <th scope="col" class="text-center">
+                    Started Date
+                </th>
+                <th scope="col" class="text-center">
+                    Image
+                </th>
+                <th scope="col" class="text-center">
+                    Action
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+
+</section>
+
+@section Scripts {
+    <script src="/js/staffProfile.js"></script>
+}

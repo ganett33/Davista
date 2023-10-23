@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DavistaArchitect.Models.UserLevel>
+
+@{
+    ViewData["Title"] = "UserLevel";
+}
+<section>
+    <header class="bg-black" style="height:100px;"></header>
+</section>
+<section class="container">
+    <div class="col-auto pt-7">
+        <h1>UserLevel List</h1>
+        <p>
+            <a asp-controller="UserLevel" asp-action="Upsert">Add UserLevel</a>
+        </p>
+        <table id="tblData_userLevel" class="table table-responsive display" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Level
+                    </th>
+                    <th>
+                        AuthorityLevel
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+        </table>
+    </div>
+
+
+</section>
+
+@section Scripts {
+    <script src="/js/userLevel.js"></script>
+}

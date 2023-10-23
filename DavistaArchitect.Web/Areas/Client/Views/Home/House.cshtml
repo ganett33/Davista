@@ -1,0 +1,46 @@
+﻿@model DavistaArchitect.Models.House
+
+@{
+    ViewData["Title"] = $"{@Model.HouseName}";
+}
+
+<!-- Projects -->
+<section id="projects" class="projects my-6">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6 offset-md-3 d-flex flex-column align-items-center text-center">
+                <h5>
+                    <span class="badge bg-primary rounded-0 text-uppercase">
+                        Projects
+                    </span>
+                </h5>
+                <h2 class="fw-bold">Project's We Are Proud Of</h2>
+                <p>
+                    We take pride in our successful projects and the value they bring to
+                    our clients. With our expertise and dedication, we have delivered
+                    exceptional results. Here are some highlights
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>@Model.HouseName</h2>
+
+            <p>@Model.HouseDescription</p>
+
+            <img src="~/@Model.HouseImage" alt="@Model.HouseName" class="img-fluid" />
+
+            <h3>House Details</h3>
+            <ul>
+                <li><strong>Category:</strong> @Model.Category.Name</li>
+                <li><strong>Project Type:</strong> @Model.ProjectType.ProjectTypeName</li>
+            </ul>
+
+            <a asp-area="Client" asp-controller="Home" asp-action="Projects">Back to Projects</a>
+        </div>
+    </div>
+</section>
+
+
+
+

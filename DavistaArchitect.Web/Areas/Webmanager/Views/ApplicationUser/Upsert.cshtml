@@ -1,0 +1,76 @@
+﻿@model DavistaArchitect.Models.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "Upsert";
+}
+<section>
+    <header class="bg-black" style="height:100px;"></header>
+</section>
+<section class="container">
+    <div class="pt-7">
+        <h1>@(Model.ApplicationUser.Name.Count() != 0 ? "Update" : "Create")</h1>
+
+        <h4>Clients</h4>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-auto">
+            <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="ApplicationUser.Id" hidden />
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.Name" class="control-label"></label>
+                    <input asp-for="ApplicationUser.Name" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+                </div>
+              <div class="form-group">
+                    <label asp-for="ApplicationUser.Email" class="control-label"></label>
+                    <input asp-for="ApplicationUser.Email" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.JobTitle" class="control-label"></label>
+                    <input asp-for="ApplicationUser.JobTitle" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.JobTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.Role" class="control-label"></label>
+                    <input asp-for="ApplicationUser.Role" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.Role" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ApplicationUser.AboutMe" class="control-label"></label>
+                    <input asp-for="ApplicationUser.AboutMe" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.AboutMe" class="text-danger"></span>
+                </div>
+
+              @* <div class="form-group">
+                    <label asp-for="AuthorityLevel" class="control-label"></label>
+                    <input asp-for="AuthorityLevel" class="form-control" />
+                    <span asp-validation-for="AuthorityLevel" class="text-danger"></span>
+                </div> *@
+                <div class="form-group">
+                    @if (Model.ApplicationUser.Id != null)
+                    {
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    }else
+                    {
+                        <button type="submit" onClick="return ValidateInput()" class="btn btn-primary">Create</button>
+
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

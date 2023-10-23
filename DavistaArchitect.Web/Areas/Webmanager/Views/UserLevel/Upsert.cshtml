@@ -1,0 +1,65 @@
+﻿@model DavistaArchitect.Models.UserLevel
+
+@{
+    ViewData["Title"] = "Upsert";
+}
+<section>
+    <header class="bg-black" style="height:100px;"></header>
+</section>
+<section class="container">
+    <div class="pt-7">
+        <h1>@(Model.Id !=0 ? "Update": "Create" )</h1>
+
+        <h4>Clients</h4>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-10">
+            <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" hidden />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Level" class="control-label"></label>
+                    <input asp-for="Level" class="form-control" />
+                    <span asp-validation-for="Level" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorityLevel" class="control-label"></label>
+                    <input asp-for="AuthorityLevel" class="form-control" />
+                    <span asp-validation-for="AuthorityLevel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @if (Model.Id != 0)
+                    {
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    }else
+                    {
+                        <button type="submit" onClick="return ValidateInput()" class="btn btn-primary">Create</button>
+
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
